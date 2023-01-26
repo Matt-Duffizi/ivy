@@ -123,16 +123,16 @@ def concat(values, axis, name=None):
 
 @to_ivy_arrays_and_back
 def matmul(
-    a,
-    b,
-    transpose_a=False,
-    transpose_b=False,
-    adjoint_a=False,
-    adjoint_b=False,
-    a_is_sparse=False,
-    b_is_sparse=False,
-    output_type=None,
-    name=None,
+        a,
+        b,
+        transpose_a=False,
+        transpose_b=False,
+        adjoint_a=False,
+        adjoint_b=False,
+        a_is_sparse=False,
+        b_is_sparse=False,
+        output_type=None,
+        name=None,
 ):
     return ivy.matmul(a, b)
 
@@ -226,17 +226,17 @@ def transpose(a, perm=None, conjugate=False, name="transpose"):
 
 @to_ivy_arrays_and_back
 def strided_slice(
-    input_,
-    begin,
-    end,
-    strides=None,
-    begin_mask=0,
-    end_mask=0,
-    ellipsis_mask=0,
-    new_axis_mask=0,
-    shrink_axis_mask=0,
-    var=None,
-    name=None,
+        input_,
+        begin,
+        end,
+        strides=None,
+        begin_mask=0,
+        end_mask=0,
+        ellipsis_mask=0,
+        new_axis_mask=0,
+        shrink_axis_mask=0,
+        var=None,
+        name=None,
 ):
     def num_to_bit_list(number):
         return list(map(int, "{:0{size}b}".format(number, size=len(input_.shape))))
@@ -292,13 +292,22 @@ def tile(input, multiples, name=None):
 
 @to_ivy_arrays_and_back
 def one_hot(
-    indices: ivy.array,
-    depth: int,
-    on_value=None,
-    off_value=None,
-    axis=None,
-    dtype=None,
-    device=None,
-    out=None,
+        indices: ivy.array,
+        depth: int,
+        on_value=None,
+        off_value=None,
+        axis=None,
+        dtype=None,
+        device=None,
+        out=None,
 ):
     return ivy.one_hot(indices, depth)
+
+
+@to_ivy_arrays_and_back
+def squeeze(
+        input: ivy.array,
+        axis=None,
+        name=None,
+):
+    return ivy.squeeze(x=input, axis=axis)
